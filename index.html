@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini App Híbrida</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="register" style="display: none;">
+        <h1>Registro</h1>
+        <button onclick="register()">Registrarse</button>
+        <button onclick="closeApp()">Volver</button>
+    </div>
+    <div id="login" style="display: none;">
+        <h1>Iniciar Sesión</h1>
+        <button onclick="login()">Iniciar Sesión</button>
+        <button onclick="closeApp()">Volver</button>
+    </div>
+    <div id="default">
+        <h1>Mini App de Telegram</h1>
+        <p>Ingresa tu mensaje:</p>
+        <input type="text" id="messageInput" placeholder="Escribe algo...">
+        <button onclick="sendData()">Enviar al Bot</button>
+    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
