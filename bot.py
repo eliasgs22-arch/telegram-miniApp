@@ -2,6 +2,19 @@ import telebot
 import json
 import os
 
+users_file = 'users.json'
+
+def load_users():
+    try:
+        with open(users_file, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
+
+def save_users(users):
+    with open(users_file, 'w') as f:
+        json.dump(users, f)
+
 # Reemplaza 'TU_BOT_TOKEN' con el token real de tu bot de Telegram
 BOT_TOKEN = '8471552191:AAGFFao1rlle1_5Z7wnS8F7WrrXc4nAxquY'
 bot = telebot.TeleBot(BOT_TOKEN)
@@ -28,10 +41,22 @@ def handle_web_app_data(message):
                 user = data.get('user', 'Sin usuario')
                 email = data.get('email', 'Sin email')
                 phone = data.get('phone', 'Sin celular')
-                bot.send_message(message.chat.id, f"Registro completado para {user} ({email}, {phone}).")
+                passw = data.get('pass', '')
+                users = load_users()
+                if any(u['user'] == user for u in users):
+                    bot.send_message(message.chat.id, f"El usuario {user} ya existe.")
+                else:
+                    users.append({'user': user, 'email': email, 'phone': phone, 'pass': passw})
+                    save_users(users)
+                    bot.send_message(message.chat.id, f"Registro completado para {user}.")
             elif data['action'] == 'login':
                 user = data.get('user', 'Sin usuario')
-                bot.send_message(message.chat.id, f"Inicio de sesión exitoso para {user}.")
+                passw = data.get('pass', '')
+                users = load_users()
+                if any(u['user'] == user and u['pass'] == passw for u in users):
+                    bot.send_message(message.chat.id, f"Inicio de sesión exitoso para {user}.")
+                else:
+                    bot.send_message(message.chat.id, "Usuario o contraseña incorrectos.")
         else:
             user_message = data.get('message', 'Sin mensaje')
             bot.send_message(message.chat.id, f"Recibí tu mensaje desde la mini app: {user_message}")
