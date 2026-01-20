@@ -41,12 +41,14 @@ def handle_web_app_data(message):
                 user = data.get('user', 'Sin usuario')
                 email = data.get('email', 'Sin email')
                 phone = data.get('phone', 'Sin celular')
+                gender = data.get('gender', 'Sin sexo')
+                age = data.get('age', 'Sin edad')
                 passw = data.get('pass', '')
                 users = load_users()
                 if any(u['user'] == user for u in users):
                     bot.send_message(message.chat.id, f"El usuario {user} ya existe.")
                 else:
-                    users.append({'user': user, 'email': email, 'phone': phone, 'pass': passw})
+                    users.append({'user': user, 'email': email, 'phone': phone, 'gender': gender, 'age': age, 'pass': passw})
                     save_users(users)
                     bot.send_message(message.chat.id, f"Registro completado para {user}.")
             elif data['action'] == 'login':

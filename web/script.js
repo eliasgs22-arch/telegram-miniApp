@@ -14,12 +14,14 @@ function register() {
     const user = document.getElementById('regUser').value;
     const email = document.getElementById('regEmail').value;
     const phone = document.getElementById('regPhone').value;
+    const gender = document.getElementById('regGender').value;
+    const age = document.getElementById('regAge').value;
     const pass = document.getElementById('regPass').value;
-    if (user.trim() === '' || email.trim() === '' || phone.trim() === '' || pass.trim() === '') {
+    if (user.trim() === '' || email.trim() === '' || phone.trim() === '' || gender.trim() === '' || age.trim() === '' || pass.trim() === '') {
         alert('Por favor, completa todos los campos.');
         return;
     }
-    Telegram.WebApp.sendData(JSON.stringify({ action: 'register', user: user, email: email, phone: phone, pass: pass }));
+    Telegram.WebApp.sendData(JSON.stringify({ action: 'register', user: user, email: email, phone: phone, gender: gender, age: age, pass: pass }));
     Telegram.WebApp.close();
 }
 
