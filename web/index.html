@@ -9,17 +9,17 @@
 <body>
     <div id="register" style="display: none;">
         <h1 style="color: blue;">Registro</h1>
-        <input type="text" id="regUser" placeholder="Usuario" style="width: 100%; padding: 8px; box-sizing: border-box; margin: 5px 0;">
-        <input type="email" id="regEmail" placeholder="Email" style="width: 100%; padding: 8px; box-sizing: border-box; margin: 5px 0;">
-        <input type="tel" id="regPhone" placeholder="Celular" style="width: 100%; padding: 8px; box-sizing: border-box; margin: 5px 0;">
-        <select id="regGender" style="width: 100%; padding: 8px; box-sizing: border-box; margin: 5px 0;">
+        <div style="display: flex; align-items: center; margin: 5px 0;"><label for="regUser" style="width: 120px;">Usuario:</label> <input type="text" id="regUser" placeholder="Usuario" style="flex: 1; padding: 8px; box-sizing: border-box;"></div>
+        <div style="display: flex; align-items: center; margin: 5px 0;"><label for="regEmail" style="width: 120px;">Email:</label> <input type="email" id="regEmail" placeholder="Email" style="flex: 1; padding: 8px; box-sizing: border-box;"></div>
+        <div style="display: flex; align-items: center; margin: 5px 0;"><label for="regPhone" style="width: 120px;">Celular:</label> <input type="tel" id="regPhone" placeholder="Celular" style="flex: 1; padding: 8px; box-sizing: border-box;"></div>
+        <div style="display: flex; align-items: center; margin: 5px 0;"><label for="regGender" style="width: 120px;">Sexo:</label> <select id="regGender" style="flex: 1; padding: 8px; box-sizing: border-box;">
             <option value="">Selecciona Sexo</option>
             <option value="Masculino">Masculino</option>
             <option value="Femenino">Femenino</option>
             <option value="Otro">Otro</option>
-        </select>
-        <input type="number" id="regAge" placeholder="Edad" style="width: 100%; padding: 8px; box-sizing: border-box; margin: 5px 0;">
-        <input type="password" id="regPass" placeholder="Contraseña" style="width: 100%; padding: 8px; box-sizing: border-box; margin: 5px 0;">
+        </select></div>
+        <div style="display: flex; align-items: center; margin: 5px 0;"><label for="regAge" style="width: 120px;">Edad:</label> <input type="number" id="regAge" placeholder="Edad" style="flex: 1; padding: 8px; box-sizing: border-box;"></div>
+        <div style="display: flex; align-items: center; margin: 5px 0;"><label for="regPass" style="width: 120px;">Contraseña:</label> <input type="password" id="regPass" placeholder="Contraseña" style="flex: 1; padding: 8px; box-sizing: border-box;"></div>
         <p style="font-size: larger; font-weight: bold;">BUSQUEDA</p>
         <div style="display: flex; justify-content: space-between;">
             <div>
