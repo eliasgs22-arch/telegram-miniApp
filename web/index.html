@@ -21,16 +21,20 @@
         <input type="number" id="regAge" placeholder="Edad" style="width: 100%; padding: 8px; box-sizing: border-box; margin: 5px 0;">
         <input type="password" id="regPass" placeholder="Contraseña" style="width: 100%; padding: 8px; box-sizing: border-box; margin: 5px 0;">
         <p style="font-size: larger; font-weight: bold;">BUSQUEDA</p>
-        <div style="display: flex; justify-content: space-between;">
-            <div>
-                CITAS <input type="checkbox" id="citas" value="CITAS"><br>
-                OCACIONAL <input type="checkbox" id="ocasional" value="OCACIONAL"><br>
-            </div>
-            <div>
-                SWINGGERS <input type="checkbox" id="swingers" value="SWINGGERS"><br>
-                ORGIAS <input type="checkbox" id="orgias" value="ORGIAS"><br>
-            </div>
-        </div>
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 5px;">CITAS</td>
+                <td style="padding: 5px;"><input type="checkbox" id="citas" value="CITAS"></td>
+                <td style="padding: 5px;">SWINGGERS</td>
+                <td style="padding: 5px;"><input type="checkbox" id="swingers" value="SWINGGERS"></td>
+            </tr>
+            <tr>
+                <td style="padding: 5px;">OCACIONAL</td>
+                <td style="padding: 5px;"><input type="checkbox" id="ocasional" value="OCACIONAL"></td>
+                <td style="padding: 5px;">ORGIAS</td>
+                <td style="padding: 5px;"><input type="checkbox" id="orgias" value="ORGIAS"></td>
+            </tr>
+        </table>
         <button onclick="register()">Registrarse</button>
         <button onclick="closeApp()">Volver</button>
     </div>
