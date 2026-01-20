@@ -27,7 +27,8 @@ def handle_web_app_data(message):
             if data['action'] == 'register':
                 user = data.get('user', 'Sin usuario')
                 email = data.get('email', 'Sin email')
-                bot.send_message(message.chat.id, f"Registro completado para {user} ({email}).")
+                phone = data.get('phone', 'Sin celular')
+                bot.send_message(message.chat.id, f"Registro completado para {user} ({email}, {phone}).")
             elif data['action'] == 'login':
                 user = data.get('user', 'Sin usuario')
                 bot.send_message(message.chat.id, f"Inicio de sesión exitoso para {user}.")
