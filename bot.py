@@ -36,6 +36,7 @@ def start(message):
 def handle_web_app_data(message):
     try:
         data = json.loads(message.web_app_data.data)
+        print("Received data:", data)
         if 'action' in data:
             if data['action'] == 'location_denied':
                 bot.send_message(message.chat.id, "Ubicación obligatoria para registrarse.")
