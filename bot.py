@@ -57,16 +57,17 @@ def handle_web_app_data(message):
                 login_input = data.get('user', '')
                 passw = data.get('pass', '')
                 users = load_users()
-                found = False
-                for u in users:
-                    if (u['email'] == login_input or u['phone'] == login_input) and u['pass'] == passw:
-                        found = True
-                        user_name = u['user']
-                        break
-                if found:
-                    bot.send_message(message.chat.id, f"Inicio de sesión exitoso para {user_name}.")
+                user_exists = any(u['email'] == login_input or u['phone'] == login_input for u in users)
+                if user_exists:
+                    # Check password
+                    found = any((u['email'] == login_input or u['phone'] == login_input) and u['pass'] == passw for u in users)
+                    if found:
+                        user_name = next(u['user'] for u in users if (u['email'] == login_input or u['phone'] == login_input) and u['pass'] == passw)
+                        bot.send_message(message.chat.id, f"Inicio de sesión exitoso para {user_name}.")
+                    else:
+                        bot.send_message(message.chat.id, "Contraseña incorrecta.")
                 else:
-                    bot.send_message(message.chat.id, "Email/Celular o contraseña incorrectos.")
+                    bot.send_message(message.chat.id, "Este usuario no se encuentra registrado.")
         else:
             user_message = data.get('message', 'Sin mensaje')
             bot.send_message(message.chat.id, f"Recibí tu mensaje desde la mini app: {user_message}")
