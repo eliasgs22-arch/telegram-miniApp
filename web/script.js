@@ -31,6 +31,10 @@ function register() {
         alert('Las contraseñas no coinciden.');
         return;
     }
+    if (interests.length === 0) {
+        alert('Por favor, selecciona al menos un interés.');
+        return;
+    }
     Telegram.WebApp.sendData(JSON.stringify({ action: 'register', user: user, email: email, phone: phone, gender: gender, age: age, pass: pass, interests: interests }));
     Telegram.WebApp.close();
 }
