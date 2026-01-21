@@ -54,13 +54,19 @@ def handle_web_app_data(message):
                     save_users(users)
                     bot.send_message(message.chat.id, f"Registro completado para {user} con intereses: {', '.join(interests)}.")
             elif data['action'] == 'login':
-                user = data.get('user', 'Sin usuario')
+                login_input = data.get('user', '')
                 passw = data.get('pass', '')
                 users = load_users()
-                if any(u['user'] == user and u['pass'] == passw for u in users):
-                    bot.send_message(message.chat.id, f"Inicio de sesión exitoso para {user}.")
+                found = False
+                for u in users:
+                    if (u['email'] == login_input or u['phone'] == login_input) and u['pass'] == passw:
+                        found = True
+                        user_name = u['user']
+                        break
+                if found:
+                    bot.send_message(message.chat.id, f"Inicio de sesión exitoso para {user_name}.")
                 else:
-                    bot.send_message(message.chat.id, "Usuario o contraseña incorrectos.")
+                    bot.send_message(message.chat.id, "Email/Celular o contraseña incorrectos.")
         else:
             user_message = data.get('message', 'Sin mensaje')
             bot.send_message(message.chat.id, f"Recibí tu mensaje desde la mini app: {user_message}")
