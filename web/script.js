@@ -117,6 +117,6 @@ function enableFields() {
 
 function error(err) {
     console.warn('Error obteniendo ubicación: ' + err.message);
-    alert('Ubicación obligatoria para el uso de la app.');
+    Telegram.WebApp.showAlert('Ubicación obligatoria para el uso de la app.');
     Telegram.WebApp.close();
 }
