@@ -71,7 +71,7 @@ if (action === 'register') {
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(success, error, {timeout: 5000});
+        navigator.geolocation.getCurrentPosition(success, error, {timeout: 20000});
     } else {
         alert('Geolocalización no soportada por este navegador.');
     }
