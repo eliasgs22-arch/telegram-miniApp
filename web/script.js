@@ -89,11 +89,13 @@ function success(position) {
             const state = address.state || address.region || 'Desconocido';
             const city = address.city || address.town || address.village || 'Desconocido';
             document.getElementById('regLocation').value = `${country}, ${state}, ${city}`;
+            document.getElementById('loading').style.display = 'none';
             enableFields();
         })
         .catch(err => {
             console.warn('Error en geocoding: ' + err);
             document.getElementById('regLocation').value = latitude + ', ' + longitude;
+            document.getElementById('loading').style.display = 'none';
             enableFields();
         });
 }
