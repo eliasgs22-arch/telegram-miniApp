@@ -11,6 +11,7 @@ function sendData() {
 }
 
 function register() {
+    const location = document.getElementById('regLocation').value;
     const user = document.getElementById('regUser').value;
     const email = document.getElementById('regEmail').value;
     const phone = document.getElementById('regPhone').value;
@@ -23,7 +24,7 @@ function register() {
     if (document.getElementById('ocasional').checked) interests.push('OCACIONAL');
     if (document.getElementById('swingers').checked) interests.push('SWINGGERS');
     if (document.getElementById('orgias').checked) interests.push('ORGIAS');
-    if (user.trim() === '' || email.trim() === '' || phone.trim() === '' || gender.trim() === '' || age.trim() === '' || pass.trim() === '' || passConfirm.trim() === '') {
+    if (location.trim() === '' || user.trim() === '' || email.trim() === '' || phone.trim() === '' || gender.trim() === '' || age.trim() === '' || pass.trim() === '' || passConfirm.trim() === '') {
         alert('Por favor, completa todos los campos.');
         return;
     }
@@ -35,7 +36,7 @@ function register() {
         alert('Por favor, selecciona al menos un interés.');
         return;
     }
-    Telegram.WebApp.sendData(JSON.stringify({ action: 'register', user: user, email: email, phone: phone, gender: gender, age: age, pass: pass, interests: interests }));
+    Telegram.WebApp.sendData(JSON.stringify({ action: 'register', location: location, user: user, email: email, phone: phone, gender: gender, age: age, pass: pass, interests: interests }));
     Telegram.WebApp.close();
 }
 

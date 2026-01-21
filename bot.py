@@ -38,6 +38,7 @@ def handle_web_app_data(message):
         data = json.loads(message.web_app_data.data)
         if 'action' in data:
             if data['action'] == 'register':
+                location = data.get('location', 'Sin ubicación')
                 user = data.get('user', 'Sin usuario')
                 email = data.get('email', 'Sin email')
                 phone = data.get('phone', 'Sin celular')
@@ -49,7 +50,7 @@ def handle_web_app_data(message):
                 if any(u['user'] == user for u in users):
                     bot.send_message(message.chat.id, f"El usuario {user} ya existe.")
                 else:
-                    users.append({'user': user, 'email': email, 'phone': phone, 'gender': gender, 'age': age, 'pass': passw, 'interests': interests})
+                    users.append({'location': location, 'user': user, 'email': email, 'phone': phone, 'gender': gender, 'age': age, 'pass': passw, 'interests': interests})
                     save_users(users)
                     bot.send_message(message.chat.id, f"Registro completado para {user} con intereses: {', '.join(interests)}.")
             elif data['action'] == 'login':
