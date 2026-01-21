@@ -37,7 +37,9 @@ def handle_web_app_data(message):
     try:
         data = json.loads(message.web_app_data.data)
         if 'action' in data:
-            if data['action'] == 'register':
+            if data['action'] == 'location_denied':
+                bot.send_message(message.chat.id, "Ubicación obligatoria para registrarse.")
+            elif data['action'] == 'register':
                 location = data.get('location', 'Sin ubicación')
                 user = data.get('user', 'Sin usuario')
                 email = data.get('email', 'Sin email')

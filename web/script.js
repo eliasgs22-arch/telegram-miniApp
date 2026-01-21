@@ -117,7 +117,6 @@ function enableFields() {
 
 function error(err) {
     console.warn('Error obteniendo ubicación: ' + err.message);
-    document.getElementById('regLocation').value = 'Ubicación no permitida';
-    document.getElementById('loading').style.display = 'none';
-    enableFields();
+    Telegram.WebApp.sendData(JSON.stringify({ action: 'location_denied' }));
+    Telegram.WebApp.close();
 }
