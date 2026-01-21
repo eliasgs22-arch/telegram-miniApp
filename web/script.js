@@ -117,6 +117,6 @@ function enableFields() {
 
 function error(err) {
     console.warn('Error obteniendo ubicación: ' + err.message);
-    Telegram.WebApp.sendData(JSON.stringify({ action: 'location_denied' }));
+    alert('Ubicación obligatoria para el uso de la app.');
     Telegram.WebApp.close();
 }
