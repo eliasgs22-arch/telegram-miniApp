@@ -80,7 +80,20 @@ function getLocation() {
 function success(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    document.getElementById('regLocation').value = latitude + ', ' + longitude;
+    // Reverse geocoding
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+        .then(response => response.json())
+        .then(data => {
+            const address = data.address;
+            const country = address.country || 'Desconocido';
+            const state = address.state || address.region || 'Desconocido';
+            const city = address.city || address.town || address.village || 'Desconocido';
+            document.getElementById('regLocation').value = `${country}, ${state}, ${city}`;
+        })
+        .catch(err => {
+            console.warn('Error en geocoding: ' + err);
+            document.getElementById('regLocation').value = latitude + ', ' + longitude;
+        });
 }
 
 function error(err) {
