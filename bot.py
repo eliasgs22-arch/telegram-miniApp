@@ -16,7 +16,7 @@ def save_users(users):
         json.dump(users, f)
 
 # Reemplaza 'TU_BOT_TOKEN' con el token real de tu bot de Telegram
-BOT_TOKEN = '8471552191:AAGFFao1rlle1_5Z7wnS8F7WrrXc4nAxquY'
+BOT_TOKEN = '8471552191:AAHfHoN20L7vTBT9lTQS5zhPnHoctgi_9dk'
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # URL de la mini app (debe ser HTTPS para producción)

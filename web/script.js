@@ -24,7 +24,7 @@ function register() {
     if (document.getElementById('ocasional').checked) interests.push('OCACIONAL');
     if (document.getElementById('swingers').checked) interests.push('SWINGGERS');
     if (document.getElementById('orgias').checked) interests.push('ORGIAS');
-    if (location.trim() === '' || user.trim() === '' || email.trim() === '' || phone.trim() === '' || gender.trim() === '' || age.trim() === '' || pass.trim() === '' || passConfirm.trim() === '') {
+    if (user.trim() === '' || email.trim() === '' || phone.trim() === '' || gender.trim() === '' || age.trim() === '' || pass.trim() === '' || passConfirm.trim() === '') {
         alert('Por favor, completa todos los campos.');
         return;
     }
