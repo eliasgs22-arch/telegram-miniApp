@@ -17,13 +17,18 @@ function register() {
     const gender = document.getElementById('regGender').value;
     const age = document.getElementById('regAge').value;
     const pass = document.getElementById('regPass').value;
+    const passConfirm = document.getElementById('regPassConfirm').value;
     let interests = [];
     if (document.getElementById('citas').checked) interests.push('CITAS');
     if (document.getElementById('ocasional').checked) interests.push('OCACIONAL');
     if (document.getElementById('swingers').checked) interests.push('SWINGGERS');
     if (document.getElementById('orgias').checked) interests.push('ORGIAS');
-    if (user.trim() === '' || email.trim() === '' || phone.trim() === '' || gender.trim() === '' || age.trim() === '' || pass.trim() === '') {
+    if (user.trim() === '' || email.trim() === '' || phone.trim() === '' || gender.trim() === '' || age.trim() === '' || pass.trim() === '' || passConfirm.trim() === '') {
         alert('Por favor, completa todos los campos.');
+        return;
+    }
+    if (pass !== passConfirm) {
+        alert('Las contraseñas no coinciden.');
         return;
     }
     Telegram.WebApp.sendData(JSON.stringify({ action: 'register', user: user, email: email, phone: phone, gender: gender, age: age, pass: pass, interests: interests }));
