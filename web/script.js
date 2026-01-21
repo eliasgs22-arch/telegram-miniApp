@@ -61,9 +61,29 @@ const action = urlParams.get('action');
 if (action === 'register') {
     document.getElementById('register').style.display = 'block';
     document.getElementById('default').style.display = 'none';
+    getLocation();
 } else if (action === 'login') {
     document.getElementById('login').style.display = 'block';
     document.getElementById('default').style.display = 'none';
 } else {
     document.getElementById('default').style.display = 'block';
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+        alert('Geolocalización no soportada por este navegador.');
+    }
+}
+
+function success(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    document.getElementById('regLocation').value = latitude + ', ' + longitude;
+}
+
+function error(err) {
+    console.warn('Error obteniendo ubicación: ' + err.message);
+    // No alert, just leave empty
 }
