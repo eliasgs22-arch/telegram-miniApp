@@ -89,11 +89,28 @@ function success(position) {
             const state = address.state || address.region || 'Desconocido';
             const city = address.city || address.town || address.village || 'Desconocido';
             document.getElementById('regLocation').value = `${country}, ${state}, ${city}`;
+            enableFields();
         })
         .catch(err => {
             console.warn('Error en geocoding: ' + err);
             document.getElementById('regLocation').value = latitude + ', ' + longitude;
+            enableFields();
         });
+}
+
+function enableFields() {
+    document.getElementById('regUser').disabled = false;
+    document.getElementById('regEmail').disabled = false;
+    document.getElementById('regPhone').disabled = false;
+    document.getElementById('regGender').disabled = false;
+    document.getElementById('regAge').disabled = false;
+    document.getElementById('regPass').disabled = false;
+    document.getElementById('regPassConfirm').disabled = false;
+    document.getElementById('citas').disabled = false;
+    document.getElementById('ocasional').disabled = false;
+    document.getElementById('swingers').disabled = false;
+    document.getElementById('orgias').disabled = false;
+    document.getElementById('registerBtn').disabled = false;
 }
 
 function error(err) {
