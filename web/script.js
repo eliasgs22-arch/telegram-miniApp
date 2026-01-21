@@ -117,5 +117,7 @@ function enableFields() {
 
 function error(err) {
     console.warn('Error obteniendo ubicación: ' + err.message);
-    // No alert, just leave empty
+    document.getElementById('regLocation').value = 'Ubicación no permitida';
+    document.getElementById('loading').style.display = 'none';
+    enableFields();
 }
